@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bank Statement Converter</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Universal Statement Parser</p>
+          <h1>Convert any bank statement PDF or RPT into clean Excel sheets.</h1>
+          <p class="subhead">
+            Upload statements from any bank and receive a structured Excel file with
+            dates, particulars, references, withdrawals, deposits, and balances.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" type="button" id="uploadTrigger">Upload statement</button>
+            <button class="ghost" type="button" id="demoTrigger">View sample output</button>
+          </div>
+          <div class="trust">
+            <span>✓ OCR-ready pipeline</span>
+            <span>✓ Multi-bank heuristics</span>
+            <span>✓ Secure local processing</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Ready to convert?</h2>
+          <p>Drag and drop your PDF/RPT file. We will detect columns and build the Excel file.</p>
+          <form id="uploadForm">
+            <label class="field">
+              Backend API URL (optional)
+              <input
+                id="apiBase"
+                name="apiBase"
+                type="url"
+                placeholder="https://api.yourdomain.com"
+              />
+              <span>Leave blank to use the same domain.</span>
+            </label>
+            <label class="dropzone" for="statement">
+              <input id="statement" name="statement" type="file" accept=".pdf,.rpt,.txt" />
+              <div>
+                <strong>Drop file here</strong>
+                <span>or click to browse</span>
+              </div>
+            </label>
+            <button class="primary" type="submit">Convert to Excel</button>
+            <p class="hint">Supported: PDF, RPT, TXT up to 15MB.</p>
+          </form>
+          <div class="status" id="status"></div>
+        </div>
+      </header>
+
+      <section class="features">
+        <div>
+          <h3>Smart column detection</h3>
+          <p>
+            We use heuristic parsing to spot dates, references, and transaction amounts even when
+            layouts vary between banks.
+          </p>
+        </div>
+        <div>
+          <h3>Multi-line narration merge</h3>
+          <p>
+            Narrations often wrap across lines. The parser stitches them back together into a
+            single row so Excel stays tidy.
+          </p>
+        </div>
+        <div>
+          <h3>Ready for review</h3>
+          <p>
+            Balance types (Dr/Cr) and missing fields are surfaced so you can validate quickly.
+          </p>
+        </div>
+      </section>
+
+      <section class="preview" id="preview">
+        <div>
+          <h2>Sample output preview</h2>
+          <p>What you receive after conversion.</p>
+        </div>
+        <div class="table">
+          <div class="row header">
+            <span>Date</span>
+            <span>Particulars</span>
+            <span>Reference</span>
+            <span>Withdrawals</span>
+            <span>Deposits</span>
+            <span>Balance</span>
+          </div>
+          <div class="row">
+            <span>2025-04-02</span>
+            <span>IMPS/509312716679/POONAM DEV/PUNB001</span>
+            <span>IMPS</span>
+            <span>8,000.00</span>
+            <span></span>
+            <span>425,115.55 Dr</span>
+          </div>
+          <div class="row">
+            <span>2025-04-03</span>
+            <span>UPI/OFUS/509100306086/DR/CHETAN MAHAJAN</span>
+            <span>UPI</span>
+            <span>5,000.00</span>
+            <span></span>
+            <span>10,030.18 Dr</span>
+          </div>
+          <div class="row">
+            <span>2025-04-05</span>
+            <span>CDAR/REC REHARI/307381</span>
+            <span>CDAR</span>
+            <span></span>
+            <span>50,000.00</span>
+            <span>55,030.18 Cr</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h2>Need bulk conversion?</h2>
+          <p>Deploy this app internally or connect it to your workflow via API.</p>
+        </div>
+        <button class="primary" type="button">Talk to us</button>
+      </section>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
